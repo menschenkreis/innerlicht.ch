@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Innerlicht · Coming Soon</title>
+  <meta name="description" content="Innerlicht – Coaching & Beratung mit Herz. Bald verfügbar auf innerlicht.ch" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <!-- Ambient light canvas -->
+  <canvas id="light-canvas"></canvas>
+
+  <!-- Floating particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Main content -->
+  <main class="container">
+
+    <header class="site-header">
+      <div class="logo-mark">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="20" cy="20" r="8" fill="none" stroke="currentColor" stroke-width="1.2"/>
+          <line x1="20" y1="2" x2="20" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="20" y1="30" x2="20" y2="38" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="2" y1="20" x2="10" y2="20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="30" y1="20" x2="38" y2="20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="6.1" y1="6.1" x2="11.7" y2="11.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="28.3" y1="28.3" x2="33.9" y2="33.9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="33.9" y1="6.1" x2="28.3" y2="11.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="11.7" y1="28.3" x2="6.1" y2="33.9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.6"/>
+        </svg>
+      </div>
+      <span class="logo-text">innerlicht<span class="tld">.ch</span></span>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow" data-reveal>Etwas Besonderes entsteht</p>
+      <h1 class="headline" data-reveal>
+        Dein Licht<br/>
+        <em>wartet darauf,</em><br/>
+        gesehen zu werden.
+      </h1>
+      <p class="subline" data-reveal>
+        Coaching &amp; Beratung mit Tiefe, Wärme und echtem Verständnis.<br/>
+        Bald sind wir für dich da.
+      </p>
+    </section>
+
+    <section class="notify-section" data-reveal>
+      <p class="notify-label">Benachrichtige mich, wenn es so weit ist</p>
+      <div class="notify-form">
+        <input
+          type="email"
+          id="email-input"
+          placeholder="deine@email.ch"
+          autocomplete="email"
+          aria-label="E-Mail-Adresse"
+        />
+        <button id="notify-btn" type="button">
+          <span class="btn-text">Ja, ich möchte das</span>
+          <span class="btn-icon">→</span>
+        </button>
+      </div>
+      <p class="notify-success" id="success-msg" aria-live="polite">
+        ✦ &nbsp;Wunderbar — wir melden uns.
+      </p>
+    </section>
+
+    <footer class="site-footer" data-reveal>
+      <div class="pillars">
+        <div class="pillar">
+          <span class="pillar-icon">◎</span>
+          <span>Coaching</span>
+        </div>
+        <div class="pillar-sep">·</div>
+        <div class="pillar">
+          <span class="pillar-icon">◎</span>
+          <span>Beratung</span>
+        </div>
+        <div class="pillar-sep">·</div>
+        <div class="pillar">
+          <span class="pillar-icon">◎</span>
+          <span>Begleitung</span>
+        </div>
+      </div>
+      <p class="copyright">© 2025 innerlicht.ch · Mit Herz gemacht in der Schweiz</p>
+    </footer>
+
+  </main>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>
