@@ -3,81 +3,311 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Innerlicht · Coming Soon</title>
-  <meta name="description" content="Innerlicht – Coaching & Beratung mit Herz. Bald verfügbar auf innerlicht.ch" />
+  <title>Innerlicht · Begleitung mit Tiefe</title>
+  <meta name="description" content="Ganzheitliches psychologisches Coaching. Raum, in dem du dich selbst wieder hören kannst." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
 
-  <!-- Ambient light canvas -->
-  <canvas id="light-canvas"></canvas>
+  <!-- Ambient glow -->
+  <div class="glow"></div>
 
-  <!-- Floating particles -->
-  <div class="particles" id="particles"></div>
+  <!-- ═══════════════════════════════════════
+       LANDING
+       ═══════════════════════════════════════ -->
+  <section class="page page-landing active" id="page-landing">
 
-  <!-- Main content -->
-  <main class="container">
-
-    <header class="site-header">
-      <div class="logo-mark">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="20" cy="20" r="8" fill="none" stroke="currentColor" stroke-width="1.2"/>
-          <line x1="20" y1="2" x2="20" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="20" y1="30" x2="20" y2="38" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="2" y1="20" x2="10" y2="20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="30" y1="20" x2="38" y2="20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="6.1" y1="6.1" x2="11.7" y2="11.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="28.3" y1="28.3" x2="33.9" y2="33.9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="33.9" y1="6.1" x2="28.3" y2="11.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="11.7" y1="28.3" x2="6.1" y2="33.9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          <circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.6"/>
-        </svg>
-      </div>
-      <span class="logo-text">innerlicht<span class="tld">.ch</span></span>
+    <header class="brand">
+      <a href="#" class="brand-link" data-nav="page-landing">innerlicht<span class="brand-tld">.ch</span></a>
     </header>
 
-    <section class="hero">
-      <p class="eyebrow" data-reveal>Etwas Besonderes entsteht</p>
-      <h1 class="headline" data-reveal>
-        Dein Licht<br/>
-        <em>wartet darauf,</em><br/>
-        gesehen zu werden.
-      </h1>
-      <p class="subline" data-reveal>
-        Coaching &amp; Beratung mit Tiefe, Wärme und echtem Verständnis.<br/>
-        Bald sind wir für dich da.
+    <div class="landing-center">
+      <p class="landing-quote" data-reveal>
+        Wenn alles dunkel scheint, hast du vielleicht nur vergessen, wo dein Licht beginnt.
       </p>
-    </section>
 
-    <section class="contact-section" data-reveal>
-      <p class="contact-label">Schreib uns</p>
-      <a class="contact-email" href="mailto:shine@innerlicht.ch">shine@innerlicht.ch</a>
-    </section>
+      <nav class="paths" data-reveal>
+        <button class="path-choice" data-nav="page-connect">
+          <span class="path-text">Da ist es noch. Ich weiss es.</span>
+        </button>
+        <button class="path-choice" data-nav="page-empty">
+          <span class="path-text">Es fühlt sich einfach nur leer an.</span>
+        </button>
+        <button class="path-choice" data-nav="page-glossary">
+          <span class="path-text">Ich kann damit nichts anfangen.</span>
+        </button>
+      </nav>
+    </div>
 
-    <footer class="site-footer" data-reveal>
-      <div class="pillars">
-        <div class="pillar">
-          <span class="pillar-icon">◎</span>
-          <span>Coaching</span>
-        </div>
-        <div class="pillar-sep">·</div>
-        <div class="pillar">
-          <span class="pillar-icon">◎</span>
-          <span>Beratung</span>
-        </div>
-        <div class="pillar-sep">·</div>
-        <div class="pillar">
-          <span class="pillar-icon">◎</span>
-          <span>Begleitung</span>
-        </div>
-      </div>
-      <p class="copyright">© 2025 innerlicht.ch · Mit Herz gemacht in der Schweiz</p>
+    <footer class="landing-footer" data-reveal>
+      <a href="mailto:shine@innerlicht.ch" class="footer-email">shine@innerlicht.ch</a>
     </footer>
+  </section>
 
-  </main>
+  <!-- ═══════════════════════════════════════
+       PAGE 1 — Verbindung spürbar
+       ═══════════════════════════════════════ -->
+  <section class="page page-sub" id="page-connect">
+
+    <button class="back-btn" data-back aria-label="Zurück">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3l-6 6 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Zurück</span>
+    </button>
+
+    <div class="page-inner">
+      <div class="page-content">
+
+        <p class="page-eyebrow" data-reveal>Verbindung</p>
+
+        <h1 class="page-headline" data-reveal>
+          Das Licht in dir<br/>ist wunderschön.
+        </h1>
+
+        <div class="page-text" data-reveal>
+          <p>Da ist etwas in dir, das noch leuchtet.</p>
+          <p>Auch wenn es leise geworden ist, es ist da.</p>
+        </div>
+
+        <div class="page-text" data-reveal>
+          <p>Manchmal reicht ein Raum, in dem du es wieder hören kannst.</p>
+          <p>Jemand, der zuhört. Ohne zu drängen.</p>
+        </div>
+
+        <div class="page-text page-text-bridge" data-reveal>
+          <p>Wenn du möchtest, begleite ich dich ein Stück auf diesem Weg.</p>
+        </div>
+
+        <div class="page-cta" data-reveal>
+          <a href="mailto:shine@innerlicht.ch" class="cta-link">Ein Gespräch beginnen</a>
+        </div>
+
+      </div>
+
+      <footer class="page-footer">
+        <a href="mailto:shine@innerlicht.ch" class="footer-email">shine@innerlicht.ch</a>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PAGE 2 — Leere
+       ═══════════════════════════════════════ -->
+  <section class="page page-sub" id="page-empty">
+
+    <button class="back-btn" data-back aria-label="Zurück">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3l-6 6 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Zurück</span>
+    </button>
+
+    <div class="page-inner">
+      <div class="page-content">
+
+        <p class="page-eyebrow" data-reveal>Leere</p>
+
+        <h1 class="page-headline" data-reveal>
+          Es darf sich<br/>so anfühlen.
+        </h1>
+
+        <div class="page-text" data-reveal>
+          <p>Leere kann schwer sein.</p>
+          <p>Still. Und manchmal auch beängstigend.</p>
+        </div>
+
+        <div class="page-text" data-reveal>
+          <p>Du musst das nicht sofort verändern.</p>
+          <p>Und du musst da auch nicht alleine durch.</p>
+        </div>
+
+        <div class="page-text page-text-bridge" data-reveal>
+          <p>Wenn du magst, bin ich da.</p>
+          <p>Einfach, um zuzuhören.</p>
+          <p>Und wenn es irgendwann mehr braucht, schauen wir gemeinsam, was dich zusätzlich unterstützen kann.</p>
+        </div>
+
+        <div class="page-cta" data-reveal>
+          <a href="mailto:shine@innerlicht.ch" class="cta-link">Ein Gespräch beginnen</a>
+        </div>
+
+      </div>
+
+      <footer class="page-footer">
+        <a href="mailto:shine@innerlicht.ch" class="footer-email">shine@innerlicht.ch</a>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PAGE 3 — Glossar
+       ═══════════════════════════════════════ -->
+  <section class="page page-sub" id="page-glossary">
+
+    <button class="back-btn" data-back aria-label="Zurück">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3l-6 6 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Zurück</span>
+    </button>
+
+    <div class="page-inner">
+      <div class="page-content">
+
+        <p class="page-eyebrow" data-reveal>Orientierung</p>
+
+        <h1 class="page-headline" data-reveal>
+          Einfach anstatt<br/>fremd und überfordernd.
+        </h1>
+
+        <div class="page-text" data-reveal>
+          <p>Vielleicht klingen manche dieser Worte fremd und überfordernd.</p>
+          <p>Das ist ganz normal.</p>
+          <p>Du musst hier nicht schon alles wissen.</p>
+        </div>
+
+        <div class="glossary" data-reveal>
+          <div class="glossary-item">
+            <h3 class="glossary-term">Inneres Licht</h3>
+            <p class="glossary-def">Ein Gefühl von Verbindung mit dir selbst. Klarer zu spüren, was für dich stimmt.</p>
+          </div>
+          <div class="glossary-item">
+            <h3 class="glossary-term">Leere</h3>
+            <p class="glossary-def">Ein Zustand, in dem sich Dinge distanziert oder bedeutungslos anfühlen können. Oft ohne klaren Grund.</p>
+          </div>
+          <div class="glossary-item">
+            <h3 class="glossary-term">Begleitung</h3>
+            <p class="glossary-def">Jemand, der ein Stück deines Weges mit dir geht. In deinem Tempo. Der dir zuhört und dir zurückspiegelt, damit du dich selbst wieder hören kannst.</p>
+          </div>
+        </div>
+
+        <div class="page-text page-text-bridge" data-reveal>
+          <p>Es geht hier nicht darum, dich zu verändern.</p>
+          <p>Und auch nicht darum, dir zu sagen, wer du sein solltest.</p>
+          <p>Du zeigst die Richtung. Wir laufen zusammen.</p>
+        </div>
+
+        <div class="page-text" data-reveal>
+          <p>Wenn etwas unklar bleibt, kannst du dich jederzeit melden.</p>
+        </div>
+
+        <div class="page-cta" data-reveal>
+          <a href="mailto:shine@innerlicht.ch" class="cta-link">Eine Frage stellen</a>
+        </div>
+
+      </div>
+
+      <footer class="page-footer">
+        <a href="mailto:shine@innerlicht.ch" class="footer-email">shine@innerlicht.ch</a>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PAGE 4 — Angebot
+       ═══════════════════════════════════════ -->
+  <section class="page page-sub" id="page-offer">
+
+    <button class="back-btn" data-back aria-label="Zurück">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3l-6 6 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Zurück</span>
+    </button>
+
+    <div class="page-inner">
+      <div class="page-content">
+
+        <p class="page-eyebrow" data-reveal>Angebot</p>
+
+        <h1 class="page-headline" data-reveal>
+          Vielleicht tut es gut,<br/>nicht alleine zu sein.
+        </h1>
+
+        <div class="page-text" data-reveal>
+          <p>Wir nehmen uns Zeit.</p>
+        </div>
+
+        <div class="page-text" data-reveal>
+          <p>In deinem Tempo.</p>
+        </div>
+
+        <div class="page-text page-text-bridge" data-reveal>
+          <p>Alles Weitere klären wir gemeinsam.</p>
+        </div>
+
+        <div class="page-cta" data-reveal>
+          <a href="mailto:shine@innerlicht.ch" class="cta-link">Ein Gespräch beginnen</a>
+        </div>
+
+      </div>
+
+      <footer class="page-footer">
+        <a href="mailto:shine@innerlicht.ch" class="footer-email">shine@innerlicht.ch</a>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PAGE 5 — Über mich
+       ═══════════════════════════════════════ -->
+  <section class="page page-sub" id="page-about">
+
+    <button class="back-btn" data-back aria-label="Zurück">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3l-6 6 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Zurück</span>
+    </button>
+
+    <div class="page-inner">
+      <div class="page-content">
+
+        <p class="page-eyebrow" data-reveal>Über mich</p>
+
+        <h1 class="page-headline" data-reveal>
+          Ich glaube, vieles von dem,<br/>was wir suchen, ist längst<br/>in uns da.
+        </h1>
+
+        <div class="page-text" data-reveal>
+          <p>Die Antworten auf unsere Fragen tragen wir oft schon in uns.</p>
+          <p>Manchmal sind sie einfach leiser geworden.</p>
+          <p>Oder schwerer erreichbar.</p>
+        </div>
+
+        <div class="page-text" data-reveal>
+          <p>In meiner Arbeit geht es nicht darum, dich zu verändern.</p>
+          <p>Sondern dir Raum zu geben, damit du dich selbst wieder besser hören, sehen, verstehen und annehmen kannst.</p>
+        </div>
+
+        <div class="page-text" data-reveal>
+          <p>Ich höre zu.</p>
+          <p>Und spiegle dir, was ich wahrnehme.</p>
+          <p>In deinem Tempo.</p>
+        </div>
+
+        <div class="page-text" data-reveal>
+          <p>Ich kenne das Gefühl, den Zugang zu sich selbst zu verlieren.</p>
+          <p>Diese Leere.</p>
+          <p>Und das Nicht-Wissen, wo man anfangen soll.</p>
+        </div>
+
+        <div class="page-text" data-reveal>
+          <p>Und ich weiss, wie viel sich verändern kann, wenn jemand da ist, der einfach zuhört.</p>
+        </div>
+
+        <div class="page-text page-text-bridge" data-reveal>
+          <p>Der Raum hält.</p>
+          <p>Raum, in dem du dich so ausdrücken kannst, wie es sich für dich gerade jetzt richtig anfühlt.</p>
+          <p>Ohne Zwang.</p>
+          <p>Ohne Scham.</p>
+        </div>
+
+        <div class="page-cta" data-reveal>
+          <a href="mailto:shine@innerlicht.ch" class="cta-link">Ein Gespräch beginnen</a>
+        </div>
+
+      </div>
+
+      <footer class="page-footer">
+        <a href="mailto:shine@innerlicht.ch" class="footer-email">shine@innerlicht.ch</a>
+      </footer>
+    </div>
+  </section>
 
   <script src="assets/main.js"></script>
 </body>
