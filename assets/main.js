@@ -17,9 +17,9 @@
   let W, H, tick = 0;
 
   const orbs = [
-    { xRatio: 0.15, yRatio: 0.25, r: 0.45, color: 'rgba(200,169,110,0.13)', speed: 0.0004, phase: 0 },
-    { xRatio: 0.78, yRatio: 0.6,  r: 0.38, color: 'rgba(237,214,180,0.10)', speed: 0.0006, phase: 1.2 },
-    { xRatio: 0.5,  yRatio: 0.85, r: 0.30, color: 'rgba(160,120,64,0.08)',  speed: 0.0005, phase: 2.4 },
+    { xRatio: 0.15, yRatio: 0.25, r: 0.45, color: 'rgba(198,122,74,0.10)',  speed: 0.0004, phase: 0 },
+    { xRatio: 0.78, yRatio: 0.6,  r: 0.38, color: 'rgba(138,154,123,0.08)', speed: 0.0006, phase: 1.2 },
+    { xRatio: 0.5,  yRatio: 0.85, r: 0.30, color: 'rgba(158,92,52,0.06)',   speed: 0.0005, phase: 2.4 },
   ];
 
   function resize() {
