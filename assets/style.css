@@ -339,9 +339,7 @@ body {
 }
 
 .page-text-bridge {
-  padding-left: clamp(1rem, 3vw, 1.5rem);
-  border-left: 1px solid var(--light-warm-deep);
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 /* ── Glossary ── */
