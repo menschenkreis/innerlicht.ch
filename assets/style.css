@@ -323,6 +323,11 @@ body {
 
 /* ── Text Blocks ── */
 .page-text {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.4rem, 3vw, 2rem);
+  margin-bottom: clamp(3rem, 7vw, 5rem);
+}
 
 .page-text p {
   font-family: var(--font-serif);
