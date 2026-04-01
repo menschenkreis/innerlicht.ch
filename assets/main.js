@@ -108,44 +108,4 @@
 })();
 
 
-/* ── Notify Form ──────────────────────────── */
-(function initNotify() {
-  const input   = document.getElementById('email-input');
-  const btn     = document.getElementById('notify-btn');
-  const success = document.getElementById('success-msg');
 
-  if (!input || !btn || !success) return;
-
-  function isValidEmail(val) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim());
-  }
-
-  function submit() {
-    const email = input.value.trim();
-
-    if (!isValidEmail(email)) {
-      input.style.outline = '2px solid #c0392b';
-      input.focus();
-      setTimeout(() => (input.style.outline = ''), 1500);
-      return;
-    }
-
-    // In production: POST to your backend / form service here.
-    // e.g. fetch('/api/notify', { method: 'POST', body: JSON.stringify({ email }) })
-    console.info('[innerlicht] Notify request for:', email);
-
-    // Optimistic UI update
-    btn.disabled  = true;
-    input.disabled = true;
-    btn.querySelector('.btn-text').textContent = 'Danke ✦';
-    btn.querySelector('.btn-icon').textContent = '';
-
-    success.classList.add('visible');
-  }
-
-  btn.addEventListener('click', submit);
-
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') submit();
-  });
-})();
