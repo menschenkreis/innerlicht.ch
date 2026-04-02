@@ -8,8 +8,8 @@
   --dark-bg:       #13121a;
   --dark-bg-sub:   #1a1922;
   --dark-text:     #e5e1db;
-  --dark-text-dim: #9a968f;
-  --dark-text-faint:#585550;
+  --dark-text-dim: #a8a49c;
+  --dark-text-faint:#7a7670;
   --dark-warm:     #c4a070;
   --dark-warm-deep:#9a7a48;
 
@@ -18,7 +18,7 @@
   --light-bg-warm: #ece4d7;
   --light-text:    #3a2e26;
   --light-text-mid:#5c4a3d;
-  --light-text-dim:#8a7668;
+  --light-text-dim:#6e5a4d;
   --light-warm:    #b8864a;
   --light-warm-deep:#8e6234;
   --light-sage:    #7a8a6e;
@@ -233,12 +233,10 @@ body {
   color: var(--dark-text-dim);
   text-decoration: none;
   transition: color 0.3s ease;
-  opacity: 0.6;
 }
 
 .landing-nav-link:hover {
   color: var(--dark-text);
-  opacity: 1;
 }
 
 .landing-nav-sep {
@@ -398,7 +396,7 @@ body {
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--light-warm);
+  color: var(--light-warm-deep);
   text-decoration: none;
   position: relative;
   padding-bottom: 0.4rem;
