@@ -320,6 +320,20 @@ body {
   margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
 }
 
+.page-portrait {
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  width: 100%;
+  max-width: 440px;
+}
+
+.page-portrait img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  filter: sepia(0.1) contrast(1.02);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+}
+
 .page-headline {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 6.5vw, 3.6rem);
