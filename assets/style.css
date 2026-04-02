@@ -169,12 +169,12 @@ body {
 
 .path-choice {
   background: none;
-  border: none;
-  padding: clamp(0.8rem, 2vw, 1.2rem) clamp(0.6rem, 1.5vw, 1rem);
+  border: 1px solid rgba(196, 160, 112, 0.2);
+  padding: clamp(1rem, 2.5vw, 1.4rem) clamp(1rem, 2vw, 1.5rem);
   cursor: pointer;
   text-align: center;
-  transition: background 0.6s ease;
-  border-radius: 4px;
+  transition: background 0.6s ease, border-color 0.6s ease, transform 0.3s var(--ease);
+  border-radius: 6px;
   font-family: inherit;
   color: inherit;
   flex: 1;
@@ -183,7 +183,13 @@ body {
 }
 
 .path-choice:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(196, 160, 112, 0.06);
+  border-color: rgba(196, 160, 112, 0.45);
+  transform: translateY(-2px);
+}
+
+.path-choice:active {
+  transform: translateY(0);
 }
 
 .path-text {
@@ -191,13 +197,13 @@ body {
   font-size: clamp(1.1rem, 3vw, 1.25rem);
   font-weight: 400;
   line-height: 1.6;
-  color: var(--dark-text-dim);
+  color: var(--dark-text);
   transition: color 0.5s ease;
   display: block;
 }
 
 .path-choice:hover .path-text {
-  color: var(--dark-text);
+  color: var(--dark-warm);
 }
 
 /* ── Landing Footer ── */
