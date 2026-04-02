@@ -151,7 +151,7 @@ body {
   font-size: clamp(1.5rem, 4vw, 2.6rem);
   font-weight: 300;
   line-height: 1.4;
-  color: var(--dark-text);
+  color: #f0ece6;
   letter-spacing: 0.005em;
   max-width: 26ch;
 }
@@ -182,7 +182,8 @@ body {
   max-width: 240px;
 }
 
-.path-choice:hover {
+.path-choice:hover,
+.path-choice:focus-visible {
   background: rgba(196, 160, 112, 0.06);
   border-color: rgba(196, 160, 112, 0.45);
   transform: translateY(-2px);
@@ -190,6 +191,8 @@ body {
 
 .path-choice:active {
   transform: translateY(0);
+  background: rgba(196, 160, 112, 0.1);
+  border-color: rgba(196, 160, 112, 0.6);
 }
 
 .path-text {
@@ -202,7 +205,9 @@ body {
   display: block;
 }
 
-.path-choice:hover .path-text {
+.path-choice:hover .path-text,
+.path-choice:active .path-text,
+.path-choice:focus-visible .path-text {
   color: var(--dark-warm);
 }
 
