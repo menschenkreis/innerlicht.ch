@@ -104,3 +104,90 @@ function triggerReveals(container) {
     requestAnimationFrame(() => el.classList.add('revealed'));
   });
 }
+
+/* ── Fog Canvas (touch: your finger is the light) ── */
+(function () {
+  const canvas = document.querySelector('.fog-canvas');
+  if (!canvas) return;
+  const hint = document.querySelector('.fog-hint');
+  const area = document.querySelector('.paths-area');
+  if (!area) return;
+
+  const ctx = canvas.getContext('2d');
+  let w, h, dpr;
+  let hasInteracted = false;
+  const LIGHT_RADIUS = 80;
+
+  function resize() {
+    dpr = window.devicePixelRatio || 1;
+    const rect = area.getBoundingClientRect();
+    w = rect.width + 20;
+    h = rect.height + 40;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    drawFog();
+  }
+
+  function drawFog() {
+    ctx.globalCompositeOperation = 'source-over';
+    // Dark fog matching the page background
+    const grad = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, Math.max(w, h) * 0.7);
+    grad.addColorStop(0, '#1a1922');
+    grad.addColorStop(1, '#13121a');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  function revealAt(x, y) {
+    if (!hasInteracted) {
+      hasInteracted = true;
+      if (hint) hint.classList.add('hidden');
+    }
+    ctx.globalCompositeOperation = 'destination-out';
+    const grad = ctx.createRadialGradient(x, y, 0, x, y, LIGHT_RADIUS);
+    grad.addColorStop(0, 'rgba(255,255,255,1)');
+    grad.addColorStop(0.4, 'rgba(255,255,255,0.6)');
+    grad.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(x, y, LIGHT_RADIUS, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const touch = e.touches ? e.touches[0] : e;
+    return {
+      x: touch.clientX - rect.left,
+      y: touch.clientY - rect.top
+    };
+  }
+
+  function onMove(e) {
+    e.preventDefault();
+    const { x, y } = getPos(e);
+    revealAt(x, y);
+  }
+
+  canvas.addEventListener('touchmove', onMove, { passive: false });
+  canvas.addEventListener('touchstart', onMove, { passive: false });
+  canvas.addEventListener('mousemove', onMove);
+
+  // Also allow clicks on revealed buttons to pass through
+  canvas.addEventListener('click', (e) => {
+    const { x, y } = getPos(e);
+    revealAt(x, y);
+    // Check if fog is cleared enough at this point
+    const pixel = ctx.getImageData(Math.round(x * dpr), Math.round(y * dpr), 1, 1).data;
+    if (pixel[3] < 100) {
+      const el = document.elementFromPoint(e.clientX, e.clientY);
+      if (el) el.click();
+    }
+  });
+
+  window.addEventListener('resize', resize);
+  resize();
+})();
