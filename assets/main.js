@@ -7,6 +7,11 @@
 'use strict';
 
 (function () {
+  // Touch detection
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    document.documentElement.classList.add('touch-device');
+  }
+
   const pages = document.querySelectorAll('.page');
   const glow  = document.querySelector('.glow');
   const navLinks = document.querySelectorAll('[data-nav]');
