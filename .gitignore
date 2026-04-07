@@ -1,24 +1,7 @@
-# OpenClaw agent workspace files
 AGENTS.md
 SOUL.md
-IDENTITY.md
-USER.md
-TOOLS.md
 HEARTBEAT.md
-BOOTSTRAP.md
-MEMORY.md
-memory/
+IDENTITY.md
+TOOLS.md
+USER.md
 .openclaw/
-node_modules/
-package.json
-package-lock.json
-skills/
-media/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
