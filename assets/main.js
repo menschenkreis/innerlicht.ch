@@ -116,7 +116,8 @@ function triggerReveals(container) {
   const ctx = canvas.getContext('2d');
   let w, h, dpr;
   let hasInteracted = false;
-  const LIGHT_RADIUS = 80;
+  let revealed = false;
+  const LIGHT_RADIUS = 70;
 
   function resize() {
     dpr = window.devicePixelRatio || 1;
@@ -128,16 +129,25 @@ function triggerReveals(container) {
     canvas.style.width = w + 'px';
     canvas.style.height = h + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    drawFog();
+    if (!hasInteracted) drawFog();
   }
 
   function drawFog() {
     ctx.globalCompositeOperation = 'source-over';
-    // Dark fog matching the page background
-    const grad = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, Math.max(w, h) * 0.7);
-    grad.addColorStop(0, '#1a1922');
-    grad.addColorStop(1, '#13121a');
-    ctx.fillStyle = grad;
+    // Opaque dark fog — slightly different shade than background for visibility
+    ctx.fillStyle = '#18171f';
+    ctx.fillRect(0, 0, w, h);
+    // Add subtle warm glow at center so it doesn't look like a plain rectangle
+    const warm = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, Math.max(w, h) * 0.6);
+    warm.addColorStop(0, 'rgba(196,160,112,0.04)');
+    warm.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = warm;
+    ctx.fillRect(0, 0, w, h);
+    // Soft edges so the fog blends into the page
+    const edgeFade = ctx.createRadialGradient(w / 2, h / 2, Math.min(w, h) * 0.25, w / 2, h / 2, Math.max(w, h) * 0.55);
+    edgeFade.addColorStop(0, 'rgba(0,0,0,0)');
+    edgeFade.addColorStop(1, 'rgba(19,18,26,0.5)');
+    ctx.fillStyle = edgeFade;
     ctx.fillRect(0, 0, w, h);
   }
 
@@ -149,7 +159,7 @@ function triggerReveals(container) {
     ctx.globalCompositeOperation = 'destination-out';
     const grad = ctx.createRadialGradient(x, y, 0, x, y, LIGHT_RADIUS);
     grad.addColorStop(0, 'rgba(255,255,255,1)');
-    grad.addColorStop(0.4, 'rgba(255,255,255,0.6)');
+    grad.addColorStop(0.35, 'rgba(255,255,255,0.7)');
     grad.addColorStop(1, 'rgba(255,255,255,0)');
     ctx.fillStyle = grad;
     ctx.beginPath();
@@ -157,12 +167,20 @@ function triggerReveals(container) {
     ctx.fill();
   }
 
+  function dissolveFog() {
+    if (revealed) return;
+    revealed = true;
+    canvas.style.transition = 'opacity 1.2s ease';
+    canvas.style.opacity = '0';
+    canvas.style.pointerEvents = 'none';
+  }
+
   function getPos(e) {
     const rect = canvas.getBoundingClientRect();
-    const touch = e.touches ? e.touches[0] : e;
+    const src = e.touches ? e.touches[0] : e;
     return {
-      x: touch.clientX - rect.left,
-      y: touch.clientY - rect.top
+      x: src.clientX - rect.left,
+      y: src.clientY - rect.top
     };
   }
 
@@ -172,20 +190,22 @@ function triggerReveals(container) {
     revealAt(x, y);
   }
 
-  canvas.addEventListener('touchmove', onMove, { passive: false });
-  canvas.addEventListener('touchstart', onMove, { passive: false });
-  canvas.addEventListener('mousemove', onMove);
+  function onTouchStart(e) {
+    e.preventDefault();
+    onMove(e);
+  }
 
-  // Also allow clicks on revealed buttons to pass through
-  canvas.addEventListener('click', (e) => {
-    const { x, y } = getPos(e);
-    revealAt(x, y);
-    // Check if fog is cleared enough at this point
-    const pixel = ctx.getImageData(Math.round(x * dpr), Math.round(y * dpr), 1, 1).data;
-    if (pixel[3] < 100) {
-      const el = document.elementFromPoint(e.clientX, e.clientY);
-      if (el) el.click();
-    }
+  function onTouchEnd() {
+    // After user lifts finger, dissolve remaining fog so buttons become clickable
+    setTimeout(dissolveFog, 400);
+  }
+
+  canvas.addEventListener('touchstart', onTouchStart, { passive: false });
+  canvas.addEventListener('touchmove', onMove, { passive: false });
+  canvas.addEventListener('touchend', onTouchEnd);
+  canvas.addEventListener('mousemove', onMove);
+  canvas.addEventListener('mouseleave', () => {
+    if (hasInteracted) setTimeout(dissolveFog, 600);
   });
 
   window.addEventListener('resize', resize);
